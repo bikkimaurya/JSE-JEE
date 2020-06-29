@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>AJAX BASED NUMBER ADDITION</title>
+
+<script type="text/javascript">
+var ajaxreq=new XMLHttpRequest();
+function validate(){
+fno=document.getElementById("fno").value;
+sno=document.getElementById("sno").value;  
+if(fno=="" || sno=="")
+    return false;
+return true;
+}
+function show()
+{
+if(!validate()){
+    alert("Please input nos ");
+    return;
+}
+
+ajaxreq.onreadystatechange=processresponse;
+var reqstr="addnos.jsp?firstnum="+fno+"&secnum="+sno;
+ajaxreq.open("GET",reqstr,true);
+ajaxreq.send(null);
+}
+function processresponse()
+{
+
+if(ajaxreq.readyState==4)
+{
+var res=document.getElementById("result");
+res.innerHTML=ajaxreq.responseText;
+}
+}
+</script>
+</head>
+<body>
+<table>
+    <tr><td><b>First No:</b></td><td><input type="text" id="fno"  ></td></tr>
+    <tr><td><b>Secnd No:</b></td><td><input type="text" id="sno"   ></td></tr>
+    <tr><td><input type="button" value="Add Nos" onclick="show( )"></td></tr>
+</table>
+<div id="result">
+</div>
+
+</body>
+</html>
+	

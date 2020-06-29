@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="jsscripts/homepage.js"></script>
+        <script type="text/javascript" src="jsscripts/jquery.js"></script>
+        
+        
+    </head>
+    <body>
+        <div id ="logo">
+            <img src="images/shopping_logo5.png">
+        
+   
+        </div>
+        
+        <fieldset id="homepage"><legend>Make a choice !</legend>
+            <input type="radio" name="choice" value="registration" id="rbtnReg"><b>Registration</b><br>
+            <input type="radio" name="choice" value="Login" id="rbtnLog" style="margin_top:60px;"><b>Login</b>
+            <br>
+            <br>
+            <input type="button" value="Next" id="nextbtn" onclick="doTask()">
+        </fieldset>
+    </body>
+</html>

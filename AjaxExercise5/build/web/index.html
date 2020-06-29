@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ajax Exercise 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            ajaxreq = new XMLHttpRequest();
+            function validate()
+            {
+                empname = document.getElementById("empname").value;
+                if(empname === "")
+                    return false;
+                return true;
+            }
+            
+            function show()
+            {
+                if(!validate())
+                {
+                    alert("Please enter employee name");
+                    return;
+                }
+                ajaxreq.onreadystatechange = processresponse;
+                ajaxreq.open("GET" , "showdetails.jsp?empname="+empname,true );
+                ajaxreq.send(null);
+            }
+            
+            function processresponse()
+            {
+                if(ajaxreq.readyState === 4)
+                {
+                    var edetails = document.getElementById("empdetails");
+                    edetails.innerHTML = ajaxreq.responseText;
+                }
+            }
+            
+            function fetchdata(event)
+            {
+                if(event.keyCode===13)
+                    show();
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        Enter employee name : <input type="text" id="empname" onkeypress="fetchdata(event)"><br>
+        <input type="button" onclick="show()" value="Show Details"><br>
+        <div id="empdetails"></div>
+    </center>
+    </body>
+</html>

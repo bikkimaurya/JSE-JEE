@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="jsscripts/jquery.js"></script>
+        <script type="text/javascript" src="jsscripts/registration.js"></script>
+        
+        
+        
+    </head>
+    <body>
+        <div id ="logo">
+            <img src="images/shopping_logo5.png">
+        
+   
+        </div>
+        
+        <fieldset id="homepage"><legend>Registration!</legend>
+                <table>
+             
+                    <tr>
+                    <th align="left">User name</th><td><input type="text" id="username"  name="username"></td><td><span id="namespan"></span></td></tr>
+                <tr><th align="left">Password</th><td><input type="password" id="password" name="password"></td><td><span id="passwordspan"></span></td></tr>
+                <th align="left">Re enter password</th><td><input type="password" id="password1"  name="password1"></td><td><span id="password1span"></span></td></tr>
+               
+            </table>
+            
+           
+            <input type="button" value="Next" id="nextbtn" onclick="doTask()"><span id="result"></span>
+        </fieldset>
+    </body>
+</html>

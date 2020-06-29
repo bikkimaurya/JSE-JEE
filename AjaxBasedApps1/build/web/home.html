@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>AJAX Example 1</title>
+<script type="text/javascript">
+var ajaxreq;
+function connect()
+{
+ajaxreq=new XMLHttpRequest();
+ajaxreq.onreadystatechange=processresponse;
+ajaxreq.open("GET","getdate.jsp",true);
+ajaxreq.send(null);
+}
+function processresponse()
+{
+ if(ajaxreq.readyState==4)
+{
+var sp1=document.getElementById("currentdate");
+sp1.innerHTML=ajaxreq.responseText;
+}
+}
+</script>
+</head>
+<body bgcolor="#ff8888">
+<center>
+<h2>Click the button to receive the date from the server</h2>
+<input type="button" 
+value="Show Date" onclick="connect( )"><br>
+<span id="currentdate"></span>
+</center>
+</body>
+</html>

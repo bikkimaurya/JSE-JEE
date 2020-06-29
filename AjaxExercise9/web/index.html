@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function validate()
+            {
+                var id = document.forms["loginform"]["userid"].value;
+                var pass = document.forms["loginform"]["password"].value;
+                if(id === "" || pass === "")
+                {
+                    alert("Please fill all fields");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <h3>Login Page</h3>
+        <form action="login.jsp" method="Post" onsubmit="return validate()" name="loginform">
+            User ID : <input type="text" id="userid" name="userid"><br>
+            Password : <input type="password" id="password" name="password"><br>
+            <input type="submit" value="Login">
+        </form>
+    </center>
+    </body>
+</html>

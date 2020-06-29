@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registration Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            ajaxreq = new XMLHttpRequest();
+            function validate()
+            {
+                userid = document.getElementById("userid").value;
+                if(userid == "")
+                    return false;
+                return true;
+            }
+            
+            function availablity()
+            {
+                if(!validate())
+                {
+                    alert("Please input username ");
+                    return;
+                }
+                
+                ajaxreq.onreadystatechange = processresponse;
+                var reqstr = "userid.jsp?userid="+userid;
+                ajaxreq.open("GET" , reqstr  , true);
+                ajaxreq.send(null);
+            }
+            
+            function processresponse()
+            {
+                if(ajaxreq.readyState == 4)
+                {
+                    var available = document.getElementById("idspan");
+                    var msg = ajaxreq.responseText;
+                    if(msg.trim()==="pass")
+                    {
+                        available.innerHTML = "UserID available";
+                        available.style.color = "green";
+                    }
+                    else
+                    {
+                        available.innerHTML = "UserID not available";
+                        available.style.color = "red";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <h3>Registration Page</h3>
+        <form action="registration.jsp" method="Post">
+            <table>
+                <tr><th>Username : </th><td><input type="text" id="username" name="username"></td><td></td></tr>
+                <tr><th>User ID  : </th><td><input type="text" id="userid" onblur="availablity()" name="userid"></td><td><span id="idspan"></span></td></tr>
+                <tr><th>Password : </th><td><input type="password" id="password" name="password"></td><td></td></tr>
+            </table>
+            <input type="submit" value="Register">
+        </form>
+    </center>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ajax Exercise 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            ajaxreq = new XMLHttpRequest();
+            function validate()
+            {
+                username = document.getElementById("username").value;
+                if(username == "")
+                    return false;
+                return true;
+            }
+            
+            function availablity()
+            {
+                if(!validate())
+                {
+                    alert("Please input username ");
+                    return;
+                }
+                
+                ajaxreq.onreadystatechange = processresponse;
+                var reqstr = "index.jsp?username="+username;
+                ajaxreq.open("GET" , reqstr  , true);
+                ajaxreq.send(null);
+            }
+            
+            function processresponse()
+            {
+                if(ajaxreq.readyState == 4)
+                {
+                    var available = document.getElementById("available");
+                    var msg = ajaxreq.responseText;
+                    if(msg.trim()==="pass")
+                    {
+                        available.innerHTML = "Username available";
+                        available.style.color = "green";
+                    }
+                    else
+                    {
+                        available.innerHTML = "Username not available";
+                        available.style.color = "red";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        Enter username : <input type="text" id="username" onblur="availablity()">
+        <span id="available"></span>
+    </center>
+    </body>
+</html>

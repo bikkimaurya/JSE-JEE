@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ajax Exercise 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            ajaxreq = new XMLHttpRequest();
+            function validate()
+            {
+                first = document.getElementById("fno").value;
+                sec = document.getElementById("sno").value;
+                if(first=="" || sec=="")
+                    return false;
+                return true;
+            }
+            
+            function show()
+            {
+                if(!validate())
+                {
+                    alert("Please input nos ");
+                    return;
+                }
+                
+                ajaxreq.onreadystatechange = processresponse;
+                var reqstr = "sum.jsp?firstnum="+first+"&secnum="+sec;
+                ajaxreq.open("GET" , reqstr  , true);
+                ajaxreq.send(null);
+            }
+            
+            function processresponse()
+            {
+                if(ajaxreq.readyState == 4)
+                {
+                    var divsum = document.getElementById("sum");
+                    divsum.innerHTML = ajaxreq.responseText;
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        Enter number 1 : <input id="fno" type="text" ><br>
+        Enter number 2 : <input id="sno" type="text" ><br>
+        <input type="button" value="Sum" onclick="show()"><br>
+        <div id="sum"></div>
+    </center>
+    </body>
+</html>
